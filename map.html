@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+    <link rel="stylesheet" href="cont1a.css">
+</head>
+<body>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="container">
+    
+        <header class="header">
+          <img src="2.jpeg" alt="W-Safe Logo" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+          <h1>W-Safe</h1>
+        
+        </header>
+
+        <div class="form-container">
+            <!-- Contact Form -->
+            <form method="POST" action="">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required placeholder="Enter your name">
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">Email</label>
+                    <input type="email" name="phone" id="phone" required placeholder="Enter email">
+                </div>
+
+                
+                <div class="button-group">
+        <button type="submit" name="add_contact" class="btn add-btn">Add Contact</button>
+        <button type="submit" name="panic" class="btn panic-btn">Panic (Send Email)</button>
+    </div>
+            </form>
+        </div>
+
+        <!-- Display contacts here -->
+        <div class="contact-list-container">
+            <h2>Contact List</h2>
+
+        
+
+            <!-- PHP to process form and display contacts -->
+            <?php
+            // Email all contacts
+            use PHPMailer\PHPMailer\PHPMailer;
+            use PHPMailer\PHPMailer\Exception;
+
+            require 'PHPMailer/src/Exception.php';
+            require 'PHPMailer/src/PHPMailer.php';
+            require 'PHPMailer/src/SMTP.php';
+           
+            // Database connection
+            $servername = "localhost";
+            $username = "root"; // Your DB username
+            $password = ""; // Your DB password
+            $database = "contact_management"; // Your DB name
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $database);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            if (isset($_POST['add_contact'])) {
+            // Add contact to the database when form is submitted
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $name = $_POST['name'];
+                $email = $_POST['phone'];
+                $sql = "INSERT INTO users (name, phone) VALUES ('$name', '$email')";
+                if ($conn->query($sql) === TRUE) {
+                    echo "<p>Contact added successfully</p>";
+                } else {
+                    echo "<p>Error adding contact: " . $conn->error . "</p>";
+                }
+            }
+
+            // Fetch and display contacts
+            $sql = "SELECT name, phone FROM users";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                echo "<table>";
+                echo "<tr><th>Name</th><th>Email</th></tr>";
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row['name'] . "</td><td>" . $row['phone'] . "</td></tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "<p>No contacts found.</p>";
+            } }
+            
+
+            
+            elseif (isset($_POST['panic'])) {
+
+            $sql = "SELECT phone FROM users";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                //Create an instance of PHPMailer
+                $mail = new PHPMailer(true);
+
+                try {
+                    //Server settings
+                    $mail->isSMTP();                                            //Send using SMTP
+                    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                    $mail->Username   = 'divyasri29032005@gmail.com';                     //SMTP username
+                    $mail->Password   = 'pdaujdxlkgmrnrow';                               //SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
+                    $mail->Port       = 587;                                    //TCP port to connect to
+
+                    // Send email to each contact
+                    while ($row = $result->fetch_assoc()) {
+                        $mail->addAddress($row['phone']);  // Add each email from the contacts
+                        $mail->isHTML(true);                                  //Set email format to HTML
+                        $mail->Subject = 'Emergency alert';
+                        $mail->Body    = 'I am in Emergency,Please help me';
+                        $mail->send();
+                        $mail->clearAddresses(); // Clear for the next mail
+                    }
+
+                    echo 'All messages have been sent successfully';
+                } catch (Exception $e) {
+                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
+            } else {
+                echo "No email addresses found.";
+            }
+
+            $conn->close();}
+            ?>
+        </div>
+    </div>
+</body>
+</html>

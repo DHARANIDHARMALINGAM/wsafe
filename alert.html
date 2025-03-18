@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panic Button Feature</title>
+    <style>
+        #panic-button {
+            padding: 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Panic Button</h1>
+    <button id="panic-button">Panic</button>
+
+    <script>
+        const storedContact = "1234567890"; // Replace with the actual contact number
+        const emergencyMessage = "I need help! Here is my current location: ";
+
+        document.getElementById('panic-button').addEventListener('click', () => {
+            // Check if the Geolocation API is supported
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    
+                    // Create the full message with location data
+                    const fullMessage = emergencyMessage + `https://www.google.com/maps?q=${latitude},${longitude}`;
+
+                    // Simulate sending the message (you'll need to implement actual SMS/email service here)
+                    sendEmergencyMessage(storedContact, fullMessage);
+                }, (error) => {
+                    console.error("Error getting location: ", error);
+                    alert("Unable to access location.");
+                });
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        });
+
+        function sendEmergencyMessage(contact, message) {
+            // For now, this just logs the message to the console.
+            // You would replace this with actual functionality to send the message.
+            console.log(`Sending message to ${contact}: ${message}`);
+            alert("Emergency message sent!");
+        }
+    </script>
+</body>
+</html>

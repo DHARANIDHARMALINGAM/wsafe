@@ -1,0 +1,150 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url(1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+}
+html {
+    scroll-behavior: smooth; 
+}
+.container{
+    max-height: 80vh;       /* Limit the height to allow scrolling */
+    overflow-y: scroll;     /* Enable vertical scrolling */
+}
+
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(80, 79, 79, 0.5);
+    z-index: 1;
+}
+
+/* Bubbles Animation */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(253, 181, 238, 0.8);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: rise 10s infinite ease-in;
+}
+
+.bubble:nth-child(odd) {
+    background-color: rgba(218, 166, 211, 0.9);
+}
+
+.bubble:nth-child(even) {
+    background-color: rgba(255, 200, 250, 0.8);
+}
+
+@keyframes rise {
+    0% {
+        bottom: -50px;
+        opacity: 0.5;
+        transform: translateX(0) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(30px) scale(1.2);
+    }
+    100% {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(-30px) scale(0.8);
+    }
+}
+
+/* Random positions, sizes, and durations for more bubbles */
+.bubble:nth-child(1) { left: 10%; width: 10px; height: 10px; animation-duration: 6s; }
+.bubble:nth-child(2) { left: 25%; width: 20px; height: 20px; animation-duration: 8s; }
+.bubble:nth-child(3) { left: 35%; width: 15px; height: 15px; animation-duration: 10s; }
+.bubble:nth-child(4) { left: 50%; width: 25px; height: 25px; animation-duration: 7s; }
+.bubble:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-duration: 9s; }
+.bubble:nth-child(6) { left: 75%; width: 30px; height: 30px; animation-duration: 11s; }
+.bubble:nth-child(7) { left: 85%; width: 10px; height: 10px; animation-duration: 12s; }
+.bubble:nth-child(8) { left: 90%; width: 18px; height: 18px; animation-duration: 9s; }
+.bubble:nth-child(9) { left: 15%; width: 22px; height: 22px; animation-duration: 13s; }
+.bubble:nth-child(10) { left: 40%; width: 25px; height: 25px; animation-duration: 8s; }
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                0 0 15px rgba(236, 89, 177, 0.7);
+    text-align: center;
+    padding: 20px;
+}
+
+.container:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                0 0 25px rgb(226, 129, 187);
+}
+
+
+
+/* Styling for each collapsible button */
+.accordion {
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    transition: 0.4s;
+    background-color: #f1f1f1; /* Light gray background */
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+/* Styling for when the section is expanded */
+.active, .accordion:hover {
+    background-color: #ccc; /* Slightly darker gray when hovered or active */
+}
+
+/* The content inside the accordion, initially hidden */
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white; /* White background for the content */
+    overflow: hidden;
+    border-top: 1px solid #ccc; /* Border to separate sections */
+    margin-bottom: 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Styling for headings */
+h2 {
+    font-size: 24px;
+    color:#DC0083;
+    font-family: cursive;
+    margin-bottom: 15px;
+}
+
+/* Adding some padding and background to the content paragraphs */
+.panel p {
+    padding: 15px 0;
+    background-color: #fff;
+    margin: 0;
+}

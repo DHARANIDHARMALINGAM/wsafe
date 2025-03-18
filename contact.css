@@ -1,0 +1,239 @@
+/* Reset some default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling for the entire body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url(1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(80, 79, 79, 0.5);
+    z-index: 1;
+}
+
+/* Bubbles Animation */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(253, 181, 238, 0.8);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: rise 10s infinite ease-in;
+}
+
+.bubble:nth-child(odd) {
+    background-color: rgba(218, 166, 211, 0.9);
+}
+
+.bubble:nth-child(even) {
+    background-color: rgba(255, 200, 250, 0.8);
+}
+
+@keyframes rise {
+    0% {
+        bottom: -50px;
+        opacity: 0.5;
+        transform: translateX(0) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(30px) scale(1.2);
+    }
+    100% {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(-30px) scale(0.8);
+    }
+}
+
+/* Random positions, sizes, and durations for more bubbles */
+.bubble:nth-child(1) { left: 10%; width: 10px; height: 10px; animation-duration: 6s; }
+.bubble:nth-child(2) { left: 25%; width: 20px; height: 20px; animation-duration: 8s; }
+.bubble:nth-child(3) { left: 35%; width: 15px; height: 15px; animation-duration: 10s; }
+.bubble:nth-child(4) { left: 50%; width: 25px; height: 25px; animation-duration: 7s; }
+.bubble:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-duration: 9s; }
+.bubble:nth-child(6) { left: 75%; width: 30px; height: 30px; animation-duration: 11s; }
+.bubble:nth-child(7) { left: 85%; width: 10px; height: 10px; animation-duration: 12s; }
+.bubble:nth-child(8) { left: 90%; width: 18px; height: 18px; animation-duration: 9s; }
+.bubble:nth-child(9) { left: 15%; width: 22px; height: 22px; animation-duration: 13s; }
+.bubble:nth-child(10) { left: 40%; width: 25px; height: 25px; animation-duration: 8s; }
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 420px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                0 0 15px rgba(236, 89, 177, 0.7);
+    text-align: center;
+    padding: 20px;
+}
+
+.container:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                0 0 25px rgb(226, 129, 187);
+}
+
+/*.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+*/
+/* Header logo styling */
+.header {
+    background: linear-gradient(135deg, #DC0083, #DC0083);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+}
+
+/* Form container styling */
+.form-container {
+    padding: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+/* Button styles */
+.add-btn {
+    background-color: #DC0083;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: #bf0273;
+}
+
+.contact-btn {
+    background-color: #DC0083;
+    color: white;
+}
+
+.contact-btn:hover {
+    background-color: #bf0273;
+}
+/* Contact list styling */
+.contact-list-container {
+    padding: 20px;
+    text-align: left;
+}
+
+.contact-list-container h2 {
+    margin-bottom: 10px;
+}
+
+ul#contactList {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul#contactList li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul#contactList li .name {
+    font-weight: bold;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    input[type="text"] {
+        font-size: 14px;
+    }
+}
+
+/* Rest of the CSS remains the same */
+
+/* Styling for the delete button inside each contact list item */
+ul#contactList li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul#contactList li .name {
+    font-weight: bold;
+}
+
+ul#contactList li .delete-btn {
+    background-color: #bf0273;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+ul#contactList li .delete-btn:hover {
+    background-color: #DC0083;
+}

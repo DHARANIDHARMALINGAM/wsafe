@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Responsive Form Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /*body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f4f8;
+            font-family: 'Poppins', sans-serif;
+        }*/
+        body {
+    font-family: 'Arial', sans-serif;
+    background-image: url(1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(80, 79, 79, 0.5);
+    z-index: 1;
+}
+
+/* Bubbles Animation */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(253, 181, 238, 0.8);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: rise 10s infinite ease-in;
+}
+
+.bubble:nth-child(odd) {
+    background-color: rgba(218, 166, 211, 0.9);
+}
+
+.bubble:nth-child(even) {
+    background-color: rgba(255, 200, 250, 0.8);
+}
+
+@keyframes rise {
+    0% {
+        bottom: -50px;
+        opacity: 0.5;
+        transform: translateX(0) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(30px) scale(1.2);
+    }
+    100% {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(-30px) scale(0.8);
+    }
+}
+
+/* Random positions, sizes, and durations for more bubbles */
+.bubble:nth-child(1) { left: 10%; width: 10px; height: 10px; animation-duration: 6s; }
+.bubble:nth-child(2) { left: 25%; width: 20px; height: 20px; animation-duration: 8s; }
+.bubble:nth-child(3) { left: 35%; width: 15px; height: 15px; animation-duration: 10s; }
+.bubble:nth-child(4) { left: 50%; width: 25px; height: 25px; animation-duration: 7s; }
+.bubble:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-duration: 9s; }
+.bubble:nth-child(6) { left: 75%; width: 30px; height: 30px; animation-duration: 11s; }
+.bubble:nth-child(7) { left: 85%; width: 10px; height: 10px; animation-duration: 12s; }
+.bubble:nth-child(8) { left: 90%; width: 18px; height: 18px; animation-duration: 9s; }
+.bubble:nth-child(9) { left: 15%; width: 22px; height: 22px; animation-duration: 13s; }
+.bubble:nth-child(10) { left: 40%; width: 25px; height: 25px; animation-duration: 8s; }
+
+
+        h1 {
+            font-family: cursive;
+            color: #bf0273;
+            margin-bottom: 20px;
+        }
+
+        .form-box {
+            /*background-color: #fff;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            transition: 0.3s;*/
+            position: relative;
+    z-index: 2;
+    width: 31%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                0 0 15px rgba(236, 89, 177, 0.7);
+    text-align: center;
+    padding: 20px;
+        }
+
+        .form-box:hover {
+            transform: translateY(-10px);
+            /*box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);*/
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                0 0 25px rgb(226, 129, 187);
+        }
+
+        form {
+            margin: 0;
+        }
+
+        .textup {
+            text-align: center;
+            color: #bf0273;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #bf0273;
+            outline: none;
+        }
+
+        .radio-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .radio-group input {
+            margin-right: 10px;
+        }
+
+        .button-container {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    width: 100%; /* Adjust this based on your layout */
+}
+
+button {
+    background-color: #DC0083;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 48%; /* Adjust the width of each button */
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+        button:hover {
+            background-color: #bf0273;
+        }
+        button a{
+            text-decoration: none;
+            color: white;
+        }
+        
+        /*.new-content {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #e8f0fe; 
+            border: 2px solid #bf0273;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+ 
+        }*/
+        .new-content {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.7); /* Same as form-box */
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                        0 0 15px rgba(236, 89, 177, 0.7); /* Same shadow as form-box */
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            z-index: 3; /* Make sure it's above the overlay */
+        }
+
+
+        .new-content h2 {
+            color: #bf0273;
+            margin-bottom: 10px;
+        }
+
+        .new-content p {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <!--<h1>Feedback Form</h1>-->
+    <div class="form-box">
+        <div class="textup">
+            <i class="fa fa-solid fa-clock"></i> It only takes two minutes!!
+        </div>
+        <form id="feedbackForm">
+            <label for="uname">
+                <i class="fa fa-solid fa-user"></i> Name
+            </label>
+            <input type="text" id="uname" name="uname" required>
+
+            <label for="email">
+                <i class="fa fa-solid fa-envelope"></i> Email
+            </label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">
+                <i class="fa-solid fa-phone"></i> Phone No
+            </label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label>
+                <i class="fa-solid fa-face-smile"></i> Are you satisfied with our service?
+            </label>
+            <div class="radio-group">
+                <input type="radio" id="yes" name="satisfy" value="yes" checked>
+                <label for="yes">Yes</label>
+
+                <input type="radio" id="no" name="satisfy" value="no">
+                <label for="no">No</label>
+            </div>
+
+            <label for="msg">
+                <i class="fa-solid fa-comments"></i> Write your Suggestions:
+            </label>
+            <textarea id="msg" name="msg" rows="4" cols="10" required></textarea>
+
+            <div class="button-container">
+                <button type="submit">Submit</button>
+                <!--<button type="button">Back</button>-->
+                <button><a href="first.html" class="button">Back</a></button>
+            </div>
+        </form>
+    </div>
+
+    <div class="new-content" id="newContent">
+        <h2>Thank you for submitting your feedback!</h2>
+        <p>Your feedback has been successfully submitted. We appreciate your input!</p>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+            document.getElementById('newContent').style.display = 'block'; // Show thank you message
+            document.getElementById('feedbackForm').reset(); // Reset form
+            document.querySelector('.form-box').style.display = 'none'; // Hide form
+        });
+    </script>
+</body>
+
+</html>

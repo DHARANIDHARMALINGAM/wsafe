@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="container">
+        <div class="header">
+            <img src="2.jpeg" alt="W-Safe Logo" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+            <h1>W-Safe</h1>
+        </div>
+
+        <div class="form-container">
+            <form id="contactForm">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" placeholder="Enter phone number">
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn add-btn" id="addContactBtn">Add</button>
+                    <button type="button" class="btn contact-btn">Contacts</button>
+                </div>
+            </form>
+        </div>
+        <!-- Display contacts here -->
+        <div class="contact-list-container">
+            <h2>Contact List</h2>
+            <ul id="contactList"></ul>
+        </div>
+    </div>
+    <script src="contact.js"></script>
+</body>
+</html>

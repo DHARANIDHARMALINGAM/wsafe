@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W-Safe</title>
+    <link rel="stylesheet" href="first.css">
+</head>
+<body>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="container">
+        <div class="header">
+            <img src="2.jpeg" alt="W-Safe Logo" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+            <h1>W-Safe</h1>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <img src="contact-icon.png" alt="Contact">
+                <p><a href="combine123.php">CONTACT</a></p>
+            </div>
+            <div class="card">
+                <img src="emergency.png" alt="SMS Alert">
+                <p><a href="emergency.html">EMERGENCY</a></p>
+            </div>
+    
+            <div class="card">
+                <img src="law5.jpg" alt="Women Laws">
+                <p><a href="wiki.html">WOMEN LAWS</a></p>
+            </div>
+            <div class="card">
+                <img src="defense.jpg" alt="Self Defense">
+                <p><a href="selfdefence.html">SELF DEFENCE</a></p>
+            </div>
+            <div class="card">
+                <img src="feedback.jpg" alt="feedback">
+                <p><a href="submit_feedback.html">FEEDBACK</a></p>
+            </div>
+            <div class="card">
+                <img src="location.jpg" alt="location">
+                <p><a href="location.html">LOCATION</a></p>
+            </div>
+        </div>
+        <div class="panic-button">
+            <button id="screamBtn">SCREAM!</button>
+            <!--<button>PANIC!</button>-->
+        </div>
+    </div>
+
+    <!-- Audio file -->
+    <audio id="screamSound" src="a.mp3.mpeg"></audio>
+
+    <!-- JavaScript to play audio -->
+    <script>
+        document.getElementById('screamBtn').addEventListener('click', function() {
+            var screamSound = document.getElementById('screamSound');
+            screamSound.play();
+        });
+    </script>
+</body>
+</html>

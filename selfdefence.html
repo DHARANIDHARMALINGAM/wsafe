@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self defence</title>
+    
+    <style>
+        
+        #video-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            width: 100vw; /* Full width of the viewport */
+        }
+        #video-frame {
+            width: 100%; /* Full width of the container */
+            height: calc(70vw * 9 / 16); /* Maintain 16:9 aspect ratio */
+            max-width: 1000px; /* Optional: Limit max width for better display on large screens */
+        }
+        #controls-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            margin-top:0px;
+        }
+        #controls {
+            display: flex;
+            gap: 20px; /* Adds spacing between buttons */
+        }
+        button {
+            font-size: 30px;
+            background-color:  rgba(236, 89, 177, 0.7);;
+            color: black;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+        }
+        .back-button {
+            font-size: 20px;
+            background-color:  rgba(236, 89, 177, 0.7);;
+            padding: 10px 30px;
+            text-decoration: none;
+            color: back;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <!-- One iframe element that stretches horizontally -->
+        <iframe id="video-frame" 
+            src="https://www.youtube.com/embed/5eq3zU1RqVY?si=THn_eKQAgWNLhF29" 
+            title="YouTube Short 1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+    </div>
+
+    <div id="controls-container">
+        <div id="controls">
+            <button onclick="playPrevious()">&lt;</button>
+
+            <!-- Back button between previous and next buttons -->
+            <button class="back-button" onclick="window.location.href='first.html'">BACK</button>
+
+            <button onclick="playNext()">&gt;</button>
+        </div>
+    </div>
+
+    <script>
+        // Array of video URLs
+        let videos = [
+            "https://www.youtube.com/embed/5eq3zU1RqVY?si=THn_eKQAgWNLhF29",
+            "https://www.youtube.com/embed/CLOsALpkvT4?si=d709fFymw4vw9Ch5",
+            "https://www.youtube.com/embed/Mk-_qszhNQo?si=HDE_1dSR1LeuGrKe",
+            "https://www.youtube.com/embed/KVpxP3ZZtAc?si=wYfjKsLWDlb3gTUx"  
+        ];
+
+        let currentVideoIndex = 0;
+
+        // Function to play the next video
+        function playNext() {
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length; // Move to next video, loop back if at the end
+            document.getElementById("video-frame").src = videos[currentVideoIndex];
+        }
+
+        // Function to play the previous video
+        function playPrevious() {
+            currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length; // Move to previous video, loop back if at the start
+            document.getElementById("video-frame").src = videos[currentVideoIndex];
+        }
+    </script>
+</body>
+</html>

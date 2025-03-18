@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contacts</title>  
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(1.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            overflow: hidden;
+        }
+        body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(80, 79, 79, 0.5);
+    z-index: 1;
+}
+
+/* Bubbles Animation */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(253, 181, 238, 0.8);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: rise 10s infinite ease-in;
+}
+
+.bubble:nth-child(odd) {
+    background-color: rgba(218, 166, 211, 0.9);
+}
+
+.bubble:nth-child(even) {
+    background-color: rgba(255, 200, 250, 0.8);
+}
+
+@keyframes rise {
+    0% {
+        bottom: -50px;
+        opacity: 0.5;
+        transform: translateX(0) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(30px) scale(1.2);
+    }
+    100% {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(-30px) scale(0.8);
+    }
+}
+
+/* Random positions, sizes, and durations for more bubbles */
+.bubble:nth-child(1) { left: 10%; width: 10px; height: 10px; animation-duration: 6s; }
+.bubble:nth-child(2) { left: 25%; width: 20px; height: 20px; animation-duration: 8s; }
+.bubble:nth-child(3) { left: 35%; width: 15px; height: 15px; animation-duration: 10s; }
+.bubble:nth-child(4) { left: 50%; width: 25px; height: 25px; animation-duration: 7s; }
+.bubble:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-duration: 9s; }
+.bubble:nth-child(6) { left: 75%; width: 30px; height: 30px; animation-duration: 11s; }
+.bubble:nth-child(7) { left: 85%; width: 10px; height: 10px; animation-duration: 12s; }
+.bubble:nth-child(8) { left: 90%; width: 18px; height: 18px; animation-duration: 9s; }
+.bubble:nth-child(9) { left: 15%; width: 22px; height: 22px; animation-duration: 13s; }
+.bubble:nth-child(10) { left: 40%; width: 25px; height: 25px; animation-duration: 8s; }
+
+/* Container and remaining content remains unchanged */
+.container {
+    position: relative;
+    z-index: 2;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                0 0 15px rgba(236, 89, 177, 0.7);
+    text-align: center;
+    padding: 20px;
+}
+
+h1{
+    color: #DC0083;
+    font-family: cursive;
+}
+.container:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                0 0 25px rgb(226, 129, 187);
+}/*.container {
+            position: relative;
+            z-index: 2;
+            width: 420px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                        0 0 15px rgba(236, 89, 177, 0.7);
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color:black;
+        }
+            */
+        .contact {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .contact h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .contact p {
+            margin: 5px 0 0;
+            font-size: 1em;
+            color: #555;
+        }
+        .contact a {
+            text-decoration: none;
+            color: #d9534f;
+            font-weight: bold;
+        }
+        .contact a:hover {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1), 
+                        0 0 25px rgb(226, 129, 187);
+        }
+        /* Bubbles Animation */
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(253, 181, 238, 0.8);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: rise 10s infinite ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+<div class="container">
+    <h1>Emergency Contacts</h1>
+    
+    <div class="contact">
+        <h2>Police</h2>
+        <p><a href="tel:100">Contact Number: 100</a></p>
+    </div>
+    
+    <div class="contact">
+        <h2>Ambulance</h2>
+        <p><a href="tel:108">Contact Number: 108</a></p>
+    </div>
+    
+    <div class="contact">
+        <h2>Women's Safety Helpline</h2>
+        <p><a href="tel:181">Contact Number: 181</a></p>
+    </div>
+
+    <div class="contact">
+        <h2>Fire Department</h2>
+        <p><a href="tel:101">Contact Number: 101</a></p>
+    </div>
+    
+    <div class="contact">
+        <h2>Local Helpline</h2>
+        <p><a href="tel:112">Contact Number: 112</a></p>
+    </div>
+</div>
+
+</body>
+</html>
+
+
